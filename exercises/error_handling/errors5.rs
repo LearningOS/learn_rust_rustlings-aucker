@@ -4,14 +4,23 @@
 // It won't compile right now! Why?
 // Execute `rustlings hint errors5` for hints!
 
-// I AM NOT DONE
 
 use std::error;
 use std::fmt;
 use std::num::ParseIntError;
 
 // TODO: update the return type of `main()` to make this compile.
-fn main() -> Result<(), ParseIntError> {
+// fn main() -> Result<(), ParseIntError> {
+//     let pretend_user_input = "42";
+//     let x: i64 = pretend_user_input.parse()?;
+//     println!("output={:?}", PositiveNonzeroInteger::new(x));
+//     Ok(())
+// }
+type MainResult<T> = std::result::Result<T, Box<dyn error::Error>>;
+// Box allows conversion of any type that implements the Error trait into a Box
+// trait object that conserves the underlying type, its drawback being that the
+// underlying type can only be known at runtime.
+fn main() -> MainResult<()> {
     let pretend_user_input = "42";
     let x: i64 = pretend_user_input.parse()?;
     println!("output={:?}", PositiveNonzeroInteger::new(x)?);

@@ -58,6 +58,7 @@ impl Error for ParseClimateError {
             Self::ParseInt(e) => Some(e),
             Self::ParseFloat(e) => Some(e),
             _ => None,
+            
         }
     }
 }
